@@ -6,7 +6,7 @@
 #    By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 20:44:34 by dcarvalh          #+#    #+#              #
-#    Updated: 2024/08/23 14:53:09 by dcarvalh         ###   ########.fr        #
+#    Updated: 2024/11/18 11:54:14 by dcarvalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 SRCS =	Bureaucrat.cpp \
+		AForm.cpp \
+		PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp \
 		main.cpp
 
 OBJS = $(SRCS:.c=.o)
@@ -52,5 +54,5 @@ gadd : $(SRCS)
 git : gadd
 	@git commit -am "make commit"
 	@$(echo) "$(C_PURPLE) SRCS committed $(C_RESET)"
-	@git push origin master
+	@git push hub master
 	@$(echo) "$(C_GREEN) PUSHED $(C_RESET)" $(NAME)

@@ -19,14 +19,22 @@ int main(void)
   std::cin >> grade;
   try 
   {
-    Bureaucrat a("Soups", grade);
-    std::cout << a.getName() << ": " << a.getGrade() << std::endl;
-    a.incGrade();
-    std::cout << a.getName() << " incremented his grade to " << a.getGrade() << std::endl;
-    a.decGrade();
-    std::cout << a.getName() << " reseted his grade to " << a.getGrade() << std::endl;
-    a.decGrade();
-    std::cout << a.getName() << " decremented his grade to " << a.getGrade() << std::endl;
+    Form e("ff", grade);
+    std::cout << "" << std::endl;
+    Bureaucrat	Marvin("Marvin", 5);
+    std::cout << Marvin;
+    Form	x("28C", 4);
+    Form	y("28D", 10);
+    std::cout << "" << std::endl;
+    std::cout << x;
+    Marvin.signForm(x);
+    std::cout << x;
+    std::cout << "" << std::endl;
+    std::cout << y;
+    Marvin.signForm(y);
+    std::cout << y;
+    std::cout << "" << std::endl;
+    Marvin.signForm(y);
   } 
   catch (std :: exception &exc){
     std :: cerr << "Exception: " << exc.what()<< std :: endl;

@@ -6,7 +6,7 @@
 /*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 14:53:39 by dcarvalh          #+#    #+#             */
-/*   Updated: 2024/11/18 11:51:35 by dcarvalh         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:45:02 by dcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ Bureaucrat :: Bureaucrat(Bureaucrat const&copied){
 }
              
 Bureaucrat &Bureaucrat :: operator=(Bureaucrat const&copied){
-    Bureaucrat *copy = Bureaucrat(copied.name, copied.grade);
+    Bureaucrat *copy = new Bureaucrat(copied.name, copied.grade);
     return *copy;
 }
 
 Bureaucrat :: ~Bureaucrat(){}
 
-int Bureaucrat :: getGrade() {return this->grade;}
-std :: string Bureaucrat :: getName() {return this->name;}
+int Bureaucrat :: getGrade() const {return this->grade;}
+std :: string Bureaucrat :: getName() const {return this->name;}
 
 void Bureaucrat :: incGrade(){
     if (this->grade > 1)
@@ -49,6 +49,27 @@ void Bureaucrat :: decGrade(){
         throw Bureaucrat :: GradeTooLowException();
 }
 
+void Bureaucrat :: signForm(AForm &f){
+    if (f.isSigned()){
+        std :: cout << this->name << " cannot sign " << f.getName() << " because it is already signed" << std :: endl;
+        return ;
+    }
+    try{
+        f.beSigned(*this);
+        std :: cout << this->name << " signs " << f.getName() << std :: endl;
+    } catch (std :: exception &e) {
+            std :: cout << this->name << " cannot sign " << f.getName() << " because " << e.what() << std :: endl;
+        }
+}
+
+void Bureaucrat :: executeForm(AForm const & f){
+    try{
+        f.execute(*this);
+        std :: cout << this->name << " executed " << f.getName() << std :: endl;
+    } catch (std :: exception &e) {
+        std :: cout << this->name << " cannot execute " << f.getName() << " because " << e.what() << std :: endl;
+    }
+}
 const char* Bureaucrat :: GradeTooHighException :: what() const throw() {
     return "Grade is too high";
 }
@@ -57,8 +78,7 @@ const char* Bureaucrat :: GradeTooLowException :: what() const throw() {
     return "Grade is too Low";
 }
 
-std :: ostream &operator<<(std :: ostream& os, Bureaucrat& b)
-{
+std :: ostream &operator<<(std :: ostream& os, Bureaucrat& b){
     os << b.getName() << ", bureaucrat grade " << b.getGrade() << std :: endl;
     return os;
 }

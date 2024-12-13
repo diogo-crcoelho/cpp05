@@ -16,9 +16,9 @@
 
 #include <string>
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     public:
@@ -28,13 +28,13 @@ class Bureaucrat {
         Bureaucrat &operator=(Bureaucrat const&);
         ~Bureaucrat();
     
-        std :: string getName();
-        int getGrade();
+        std :: string getName() const;
+        int getGrade() const;
 
         void incGrade();
         void decGrade();
-        void signForm(Form &);
-
+        void signForm(AForm &);
+        void executeForm(AForm const &);
         class GradeTooHighException : public std :: exception {
             public:
                 virtual const char* what() const throw();

@@ -26,14 +26,14 @@ Bureaucrat :: Bureaucrat(Bureaucrat const&copied){
 }
              
 Bureaucrat &Bureaucrat :: operator=(Bureaucrat const&copied){
-    Bureaucrat *copy = new Bureaucrat(copied.name, copied.grade);
+    Bureaucrat *copy = Bureaucrat(copied.name, copied.grade);
     return *copy;
 }
 
 Bureaucrat :: ~Bureaucrat(){}
 
 int Bureaucrat :: getGrade() {return this->grade;}
-std :: string Bureaucrat ::getName() {return this->name;}
+std :: string Bureaucrat :: getName() {return this->name;}
 
 void Bureaucrat :: incGrade(){
     if (this->grade > 1)
@@ -49,10 +49,28 @@ void Bureaucrat :: decGrade(){
         throw Bureaucrat :: GradeTooLowException();
 }
 
+void Bureaucrat :: signForm(Form &f){
+    if (f.isSigned()){
+        std :: cout << this->name << " cannot sign " << f.getName() << " because it is already signed" << std :: endl;
+        return ;
+    }
+    try{
+        f.beSigned(*this);
+        std :: cout << this->name << " signs " << f.getName() << std :: endl;
+    } catch (std :: exception &e) {
+            std :: cout << this->name << " cannot sign " << f.getName() << " because " << e.what() << std :: endl;
+        }
+}
+
 const char* Bureaucrat :: GradeTooHighException :: what() const throw() {
     return "Grade is too high";
 }
 
 const char* Bureaucrat :: GradeTooLowException :: what() const throw() {
     return "Grade is too Low";
+}
+
+std :: ostream &operator<<(std :: ostream& os, Bureaucrat& b){
+    os << b.getName() << ", bureaucrat grade " << b.getGrade() << std :: endl;
+    return os;
 }
