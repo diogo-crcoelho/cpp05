@@ -26,14 +26,14 @@ Bureaucrat :: Bureaucrat(Bureaucrat const&copied){
 }
              
 Bureaucrat &Bureaucrat :: operator=(Bureaucrat const&copied){
-    Bureaucrat *copy = new Bureaucrat(copied.name, copied.grade);
+    Bureaucrat *copy = Bureaucrat(copied.name, copied.grade);
     return *copy;
 }
 
 Bureaucrat :: ~Bureaucrat(){}
 
 int Bureaucrat :: getGrade() {return this->grade;}
-std :: string Bureaucrat ::getName() {return this->name;}
+std :: string Bureaucrat :: getName() {return this->name;}
 
 void Bureaucrat :: incGrade(){
     if (this->grade > 1)
@@ -59,6 +59,6 @@ const char* Bureaucrat :: GradeTooLowException :: what() const throw() {
 
 std :: ostream &operator<<(std :: ostream& os, Bureaucrat& b)
 {
-    os << b.getName() << ", bureaucrat grade " << b.getGrade();
+    os << b.getName() << ", bureaucrat grade " << b.getGrade() << std :: endl;
     return os;
 }
