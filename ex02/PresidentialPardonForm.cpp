@@ -26,5 +26,5 @@ PresidentialPardonForm :: ~PresidentialPardonForm() {}
 std :: string PresidentialPardonForm :: getTarget() { return this->target; }
 
 void PresidentialPardonForm :: executor() const {
-    std :: cout << target << " has been pardoned by  Zaphod Beeblebrox!" << std :: endl;
+    std :: cout << target << " has been pardoned by Zaphod Beeblebrox!" << std :: endl;
 }

@@ -26,7 +26,7 @@ RobotomyRequestForm :: ~RobotomyRequestForm() {}
 std :: string RobotomyRequestForm :: getTarget() { return this->target; }
 
 void RobotomyRequestForm :: executor() const {
-    std :: srand(std :: time(0));
+    // std :: srand(std :: time(0));
     std :: cout << "*drilling noises* " << target;
     std :: cout << (rand() % 2 ? " has been succesfully robotomized!" : " has failed its robotomization!");
     std :: cout << std :: endl;
