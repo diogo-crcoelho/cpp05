@@ -23,7 +23,7 @@ class RobotomyRequestForm: public AForm{
         RobotomyRequestForm &operator=(RobotomyRequestForm const &);
         virtual ~RobotomyRequestForm();
 
-        std :: string getTarget();
+        std :: string getTarget() const;
         void executor() const;
 
     private:

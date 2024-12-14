@@ -17,13 +17,13 @@ PresidentialPardonForm :: PresidentialPardonForm(std :: string target): AForm("P
 PresidentialPardonForm :: PresidentialPardonForm(const PresidentialPardonForm &copy) : AForm(copy), target(copy.target) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &copy) {
-    *this = PresidentialPardonForm(copy.target);
+    this->target = copy.getTarget();
     return *this;
 }
 
 PresidentialPardonForm :: ~PresidentialPardonForm() {}
 
-std :: string PresidentialPardonForm :: getTarget() { return this->target; }
+std :: string PresidentialPardonForm :: getTarget() const { return this->target; }
 
 void PresidentialPardonForm :: executor() const {
     std :: cout << target << " has been pardoned by Zaphod Beeblebrox!" << std :: endl;

@@ -27,7 +27,7 @@ class Form {
 
         std :: string getName();
         int  getGrades();
-        bool isSigned();
+        bool isSigned() const;
         void beSigned(Bureaucrat &);
 
         class GradeTooHighException : public std :: exception {

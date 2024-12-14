@@ -22,7 +22,7 @@ class ShrubberyCreationForm: public AForm{
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &);
         virtual ~ShrubberyCreationForm();
 
-        std :: string getTarget();
+        std :: string getTarget() const;
         void executor() const;
 
     private:

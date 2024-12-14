@@ -23,12 +23,11 @@ Form :: Form(std :: string name, int grade): name(name), ssigned(false), reqSign
 
 Form :: Form(Form const&copied): name(copied.name), ssigned(copied.ssigned), reqSignGrade(copied.reqSignGrade), reqExecGrade(copied.reqExecGrade){
     *this = copied;
-    return *this;
 }
 
 Form &Form :: operator=(Form const&copied){
-    Form *copy = new Form(copied.name, copied.reqExecGrade);
-    return *copy;
+    this->ssigned = copied.isSigned();
+    return *this;
 }
 
 Form :: ~Form(){}
@@ -36,7 +35,7 @@ Form :: ~Form(){}
 int Form :: getGrades() {return this->reqExecGrade;}
 std :: string Form :: getName() {return this->name;}
 
-bool Form :: isSigned() { return this->ssigned; }
+bool Form :: isSigned() const { return this->ssigned; }
 
 void Form :: beSigned(Bureaucrat &b){
     // std :: cout << this->reqSignGrade << " <><> " << b.getGrade() << std :: endl;

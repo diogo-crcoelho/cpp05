@@ -17,13 +17,13 @@ RobotomyRequestForm :: RobotomyRequestForm(std :: string target): AForm("Robotom
 RobotomyRequestForm :: RobotomyRequestForm(const RobotomyRequestForm &copy) : AForm(copy), target(copy.target) {}
 
 RobotomyRequestForm &RobotomyRequestForm :: operator=(const RobotomyRequestForm &copy) {
-    *this = RobotomyRequestForm(copy.target);
+    this->target = copy.getTarget();
     return *this;
 }
 
 RobotomyRequestForm :: ~RobotomyRequestForm() {}
 
-std :: string RobotomyRequestForm :: getTarget() { return this->target; }
+std :: string RobotomyRequestForm :: getTarget() const { return this->target; }
 
 void RobotomyRequestForm :: executor() const {
     std :: cout << "*drilling noises* " << target;

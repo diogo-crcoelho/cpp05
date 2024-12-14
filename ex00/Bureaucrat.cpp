@@ -26,8 +26,8 @@ Bureaucrat :: Bureaucrat(Bureaucrat const&copied){
 }
              
 Bureaucrat &Bureaucrat :: operator=(Bureaucrat const&copied){
-    Bureaucrat *copy = Bureaucrat(copied.name, copied.grade);
-    return *copy;
+    grade = copied.grade;
+    return *this;
 }
 
 Bureaucrat :: ~Bureaucrat(){}

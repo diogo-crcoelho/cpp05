@@ -17,13 +17,13 @@ ShrubberyCreationForm :: ShrubberyCreationForm(std :: string target): AForm("Shr
 ShrubberyCreationForm :: ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy), target(copy.target) {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy) {
-    *this = ShrubberyCreationForm(copy.target);
+    this->target = copy.getTarget();
     return *this;
 }
 
 ShrubberyCreationForm :: ~ShrubberyCreationForm() {}
 
-std :: string ShrubberyCreationForm :: getTarget() { return this->target; }
+std :: string ShrubberyCreationForm :: getTarget() const { return this->target; }
 
 void ShrubberyCreationForm :: executor() const {
     std :: ofstream file((this->target + "_shrubbery").c_str());
